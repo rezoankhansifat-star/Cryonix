@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cryonix — Mars Habitat</title>
+  <!-- model-viewer script -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* Fullscreen background */
+    model-viewer {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* behind your content */
+    }
+    .page-content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+
+  <style>
+
+    a {
+      color: inherit;             /* use parent text color */
+      text-decoration: none;      /* remove default underline */
+      position: relative;         /* needed for pseudo-element */
+    }
+
+    /* create a hidden underline */
+    a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;               /* space below text */
+      width: 0%;
+      height: 2px;                /* thickness of underline */
+      background-color: currentColor;
+      transition: width 0.3s ease; /* smooth animation */
+    }
+
+    /* animate on hover */
+    a:hover::after {
+      width: 100%;
+    }
+    
+    /* ============================
+       Variables / Reset
+       ============================ */
+    :root{
+      --white: #ffffff;
+      --overlay: rgba(0,0,0,0.61);
+      --card-border: rgba(255,255,255,0.22);
+      --card-border-strong: rgba(255,255,255,0.53);
+      --glass-shadow: rgba(0,0,0,0.25);
+      --font-sans: "Poppins", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; font-family: var(--font-sans); background: #000; color: var(--white); }
+
+    /* ============================
+       Page container + background
+       ============================ */
+    .home {
+      position: relative;
+      width: 100%;
+      min-width: 1200px; /* keep large-layout friendly, but not extreme */
+      min-height: 820px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--overlay);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ============================
+       Header
+       ============================ */
+    .site-header {
+      position: relative;
+      z-index: 12;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 84px;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: "Poppins-Black", Helvetica;
+      font-weight: 900;
+      font-size: 34px;
+      color: var(--white);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .main-nav .nav-link {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 16px;
+      text-decoration: none;
+      opacity: 0.95;
+    }
+    .main-nav .nav-link.active { font-weight: 900; }
+
+    .header-right {
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      color: var(--white);
+      font-size: 15px;
+    }
+    .data-host { color: #bdbdbd; font-size: 15px; }
+    .icon-btn { background: none; border: none; padding: 6px; cursor: pointer; }
+    .icon-btn img, .icon-gpt, .icon-user { width: 20px; height: 20px; display:block; }
+
+    /* ============================
+       Page Grid (content + sidebar)
+       ============================ */
+    .content-wrap{
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      padding: 60px 90px;
+      align-items: start;
+    }
+
+    /* ============================
+       Left: Hero + Feature Card
+       ============================ */
+    .hero-left {
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: start;
+    }
+
+    .hero-intro {
+      font-size: 56px;
+      line-height: 60px;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .hero-intro .kicker {
+      display:block;
+      font-size: 34px;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .hero-description {
+      max-width: 660px;
+      color: var(--white);
+      font-size: 18.5px;
+      line-height: 1.45;
+      opacity: 0.95;
+      margin-top: 6px;
+    }
+
+    /* New feature card (the boxed section) */
+    .feature-section {
+      display: flex;
+      margin-top: 18px;
+    }
+
+    .feature-content {
+      width: 100%;
+      max-width: 660px;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 0 13px 2px var(--glass-shadow);
+      color: var(--white);
+    }
+
+    .feature-content .intro { font-size: 1.05rem; font-weight: 300; margin-bottom: 2px; }
+    .feature-content .title { font-size: 44px; line-height: 48px; font-weight:900; margin: 6px 0 12px; }
+    .feature-content .desc { font-size: 15.5px; line-height: 1.6; opacity: 0.95; margin-bottom: 14px; }
+
+    .feature-content .divider {
+      width: 100%;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin: 14px 0;
+    }
+
+    .feature-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .icon-box {
+      flex: 0 0 92px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.015);
+      text-align:center;
+      font-size: 13px;
+    }
+    .icon-box img { width: 36px; height: 36px;  display:block; }
+
+    /* ============================
+       Right: Sidebar Data Cards
+       ============================ */
+    .sidebar {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      align-self: start;
+    }
+
+    .sidebar .data-source-header {
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      margin-bottom: 14px;
+      opacity: 0.95;
+    }
+
+    .data-list {
+      display: grid;
+      gap: 14px;
+      max-height: 680px;
+      overflow: auto;
+      padding-right: 6px;
+    }
+
+    .data-card {
+      border-radius: 10px;
+      border: 1px solid var(--card-border-strong);
+      padding: 12px;
+      background: rgba(255,255,255,0.015);
+      box-shadow: 0 0 10px 2px rgba(0,0,0,0.25);
+      opacity: 0.92;
+      font-size: 14px;
+    }
+    .data-card .title { font-weight: 600; margin-bottom: 6px; }
+    .data-card .sub { color: #d0d0d0; font-size: 13px; }
+
+    /* ============================
+       Enter CTA & chevron
+       ============================ */
+    .cta-wrapper {
+      position: relative;   /* or absolute if needed */
+      z-index: 10;          /* higher than overlay */
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      }
+
+
+    .enter-base-cta {
+      font-weight: 900;
+      font-size: 42px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.6px;
+      color: #ffffff;        /* white explicitly */
+      padding: 12px 24px;    /* make it bigger and easier to see */
+      border-radius: 10px;
+}
+
+
+    .chevron {
+      position: absolute;
+      right: 110px;
+      top: calc(100% - 120px);
+      z-index: 6;
+      pointer-events: none;
+    }
+    .chev-icon { width: 28px; height: 28px; opacity: 0.95; }
+
+    /* ============================
+       Responsive tweaks
+       ============================ */
+    @media (max-width: 1200px){
+      .content-wrap { grid-template-columns: 1fr 300px; padding: 48px; gap: 28px; }
+      .hero-intro { font-size: 44px; }
+      .feature-content .title { font-size: 36px; }
+    }
+    @media (max-width: 900px){
+      .content-wrap { grid-template-columns: 1fr; padding: 28px; gap: 22px; }
+      .site-header { padding: 18px 22px; }
+      .brand { font-size: 24px; }
+      .hero-intro { font-size: 36px; }
+      .enter-base-cta { font-size: 28px; }
+      .chevron { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 3D background -->
+  <model-viewer
+  id="bgModel"
+  src="mars.glb"
+  alt="3D model"
+  auto-rotate
+  disable-zoom
+  exposure="1"
+  environment-image="neutral"
+  style="--model-viewer-camera-orbit: 0deg 75deg auto;">
+  </model-viewer>
+
+<script>
+  const modelViewer = document.getElementById("bgModel");
+
+  window.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 60; // left-right
+    const y = (e.clientY / window.innerHeight - 0.5) * 20; // up-down
+    modelViewer.cameraOrbit = `${x}deg ${75 - y}deg auto`;
+  });
+</script>
+
+
+
+  <div class="home">
+    <!-- background + overlay -->
+    <img class="hero-bg" src="image/bg.jpg" alt="Mars background" />
+    <div class="overlay"></div>
+
+    <!-- header -->
+    <header class="site-header">
+      <div class="brand">Cryonix</div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="dashboard.html">Outer Base</a>
+        <a class="nav-link" href="housing.html">Inner Base</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="data-source-label">Data Source ▸</div>
+        <div class="data-host">data.nasa.gov</div>
+        <div class="lang">EN</div>
+
+        <img class="icon-gpt" src="image/gpt.png" alt="gpt" />
+        <img class="icon-user" src="image/user.png" alt="user" />
+        <button class="icon-btn" aria-label="menu">
+          <img src="image/bar.png" alt="menu" />
+        </button>
+        
+      </div>
+    </header>
+
+    <!-- content area -->
+    <div class="content-wrap">
+      <!-- Left column -->
+      <div class="hero-left">
+        
+        <div>
+          <h1 class="hero-intro">
+            <span class="kicker">Introducing</span>
+            Mars Habitat System
+          </h1>
+
+          <p class="hero-description">
+            Building a Mars habitat is huge: it’s not just a shelter, it’s an entire
+            self-sustaining system that must protect, support, and keep humans
+            productive for months or years in a hostile environment. Below is a
+            practical, prioritized checklist of the major things to consider, with
+            short explanations and pointers to key sources.
+          </p>
+        </div>
+
+        <!-- FEATURE CARD (new) -->
+        <section class="feature-section" aria-labelledby="feature-heading">
+          <div class="feature-content" id="feature-heading">
+            <div class="title">Engineering a Future on Mars </div>
+            <p class="desc">
+              The Mars Habitat System represents one of the most complex engineering challenges in human history. It is a fully integrated, closed-loop life support system designed to provide a safe, functional, and sustainable living environment for astronauts on the Martian surface, shielding them from radiation, extreme temperatures, and the thin atmosphere.
+            </p>
+
+            <hr class="divider" />
+
+            <div class="feature-icons">
+              <div class="icon-box">
+                <img src="image/mars.png" alt="Why Mars">
+                <div>Why MARS</div>
+              </div>
+
+              <div class="icon-box">
+                <img src="image/comp.png" alt="Engineering">
+                <div>Engineering<br/>Design</div>
+              </div>
+
+              <div class="icon-box">
+                <img src="image/lightbulb.png" alt="Learning">
+                <div>Habitat<br/>Learning</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+      </div>
+
+      <!-- Right column (sidebar) -->
+      <aside class="sidebar" aria-label="Data sources">
+        <div class="data-source-header">Data Sources</div>
+
+        <div class="data-list">
+          <div class="data-card">
+            <div class="title">Data Source 1</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+
+          <div class="data-card">
+            <div class="title">Data Source 2</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+
+          <div class="data-card">
+            <div class="title">Data Source 3</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+
+          <div class="data-card">
+            <div class="title">Data Source 4</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+
+          <div class="data-card">
+            <div class="title">Data Source 5</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+
+          <div class="data-card">
+            <div class="title">Data Source 6</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+
+          <div class="data-card">
+            <div class="title">Data Source 7</div>
+            <div class="sub">Plastic Management<br/><a href="#">Link</a></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- subtle chevron (optional) -->
+    <div class="chevron" aria-hidden="true">
+      <img class="chev-icon" src="image/scroll.png" alt="scroll down" />
+    </div>
+    <div class="cta-wrapper">
+    <a class="enter-base-cta" href="#">Enter The Base</a>
+  </div>
+  </div>
+</body>
+</html>

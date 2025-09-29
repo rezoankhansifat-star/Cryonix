@@ -1,0 +1,1905 @@
+/* Base reset and typography */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+/*Hover underline effect for links*/
+a {
+      color: inherit;             /* use parent text color */
+      text-decoration: none;      /* remove default underline */
+      position: relative;         /* needed for pseudo-element */
+    }
+
+    /* create a hidden underline */
+    a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;               /* space below text */
+      width: 0%;
+      height: 2px;                /* thickness of underline */
+      background-color: currentColor;
+      transition: width 0.3s ease; /* smooth animation */
+    }
+
+    /* animate on hover */
+    a:hover::after {
+      width: 100%;
+    }
+
+
+body {
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow: hidden; /* prevent page scroll; dashboard handles its own overflow */
+  height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Hide scrollbars cross-browser in scroll areas */
+.frame {
+  scrollbar-width: none; /* Firefox */
+}
+.frame::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.dashboard {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
+  position: relative;
+}
+
+.dashboard .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.dashboard .rectangle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 445px;
+  height: 100vh;
+  background-color: #fffffff2;
+}
+
+.dashboard .text-wrapper {
+  top: 80px; /* align parallel to Cryonix */
+  left: 720px;
+  width: 86px;
+  position: absolute;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .div {
+  position: absolute;
+  top: 76px; /* same row as Cryonix */
+  left: 805px;
+  width: 122px;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-2 {
+  position: absolute;
+  top: 80px; /* same row as Cryonix */
+  left: 940px;
+  width: 122px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .rectangle-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 394px;
+  height: 886px;
+  background: linear-gradient(
+    269deg,
+    rgba(217, 217, 217, 0) 0%,
+    rgba(242, 160, 81, 1) 100%
+  );
+}
+
+.dashboard .text-wrapper-3 {
+  position: absolute;
+  top: 68px;
+  left: 168px;
+  width: 529px;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 41px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .lat-lon {
+  position: absolute;
+  top: 121px;
+  left: 171px;
+  width: 347px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .mask-group {
+  position: absolute;
+  top: 71px;
+  left: 71px;
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+}
+
+.dashboard .text-wrapper-4 {
+  position: absolute;
+  top: 185px;
+  left: 71px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-5 {
+  position: absolute;
+  top: 634px;
+  left: 590px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .p {
+  position: absolute;
+  top: 615px;
+  left: 71px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-6 {
+  position: absolute;
+  top: 900px;
+  left: 1250px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #e3dfdf;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-7 {
+  position: absolute;
+  top: 185px;
+  left: 887px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 25px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .connectivity-signal {
+  position: absolute;
+  top: 443px;
+  left: 76px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .captured-by-rover {
+  position: absolute;
+  top: 797px;
+  left: 589px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .span {
+  font-weight: 500;
+}
+
+.dashboard .text-wrapper-8 {
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+}
+
+.dashboard .rover-curiosity {
+  top: 810px; /* below Curiosity GUI image (685px + 120px + 5px gap) */
+  left: 75px;
+  position: absolute;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.dashboard .text-wrapper-9 {
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.dashboard .rover-oppurtunity {
+  top: 810px; /* below Opportunity GUI image (672px + 145px + 5px gap) */
+  left: 245px;
+  position: absolute;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.dashboard .rover-sprit {
+  top: 812px; /* below Spirit GUI image (672px + 134px + 6px gap) */
+  left: 415px;
+  position: absolute;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.dashboard .rectangle-3 {
+  position: absolute;
+  top: 220px;
+  left: 71px;
+  width: 301px;
+  height: 69px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-4 {
+  position: absolute;
+  top: 297px;
+  left: 71px;
+  width: 301px;
+  height: 69px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-5 {
+  position: absolute;
+  top: 665px;
+  left: 71px;
+  width: 163px;
+  height: 159px;
+  background-color: #ffffcf61;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-6 {
+  position: absolute;
+  top: 665px;
+  left: 241px;
+  width: 163px;
+  height: 159px;
+  background-color: #ffffcf61;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-7 {
+  position: absolute;
+  top: 665px;
+  left: 411px;
+  width: 163px;
+  height: 159px;
+  background-color: #ffffcf61;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-8 {
+  position: absolute;
+  top: 233px;
+  left: 885px;
+  width: 515px;
+  height: 159px;
+  background-color: #e5e59f26;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-9 {
+  position: absolute;
+  top: 374px;
+  left: 71px;
+  width: 301px;
+  height: 41px;
+  background-color: #fefdba;
+  border-radius: 10px;
+}
+
+.dashboard .text-wrapper-10 {
+  position: absolute;
+  top: 228px;
+  left: 147px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-11 {
+  position: absolute;
+  top: 305px;
+  left: 145px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-12 {
+  position: absolute;
+  top: 382px;
+  left: 183px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-13 {
+  position: absolute;
+  top: 254px;
+  left: 147px;
+  width: 258px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-14 {
+  position: absolute;
+  top: 331px;
+  left: 145px;
+  width: 258px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .img {
+  position: absolute;
+  top: 227px;
+  left: 78px;
+  width: 56px;
+  height: 55px;
+}
+
+.dashboard .mask-group-2 {
+  position: absolute;
+  top: 304px;
+  left: 78px;
+  width: 56px;
+  height: 55px;
+}
+
+.dashboard .cr-edr {
+  position: absolute;
+  top: 666px;
+  left: 585px;
+  width: 144px;
+  height: 144px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+}
+
+.dashboard .FRA {
+  position: absolute;
+  top: 666px;
+  left: 665px;
+  width: 144px;
+  height: 144px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+}
+
+.dashboard .RRA {
+  position: absolute;
+  top: 666px;
+  left: 758px;
+  width: 144px;
+  height: 144px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+}
+
+.dashboard .screenshot {
+  position: absolute;
+  top: 685px;
+  left: 72px;
+  width: 171px;
+  height: 120px;
+  aspect-ratio: 1.43;
+  object-fit: cover;
+}
+
+.dashboard .screenshot-2 {
+  left: 237px;
+  width: 173px;
+  height: 145px;
+  aspect-ratio: 1.19;
+  position: absolute;
+  top: 672px;
+  object-fit: cover;
+}
+
+.dashboard .screenshot-3 {
+  left: 418px;
+  width: 161px;
+  height: 134px;
+  aspect-ratio: 1.2;
+  position: absolute;
+  top: 672px;
+  object-fit: cover;
+}
+
+.dashboard .rectangle-10 {
+  position: absolute;
+  top: 254px;
+  left: 896px;
+  width: 112px;
+  height: 118px;
+  background-color: #eacc8e40;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-11 {
+  position: absolute;
+  top: 254px;
+  left: 1024px;
+  width: 112px;
+  height: 118px;
+  background-color: #eacc8e40;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-12 {
+  position: absolute;
+  top: 254px;
+  left: 1152px;
+  width: 112px;
+  height: 118px;
+  background-color: #eacc8e40;
+  border-radius: 10px;
+}
+
+.dashboard .rectangle-13 {
+  position: absolute;
+  top: 254px;
+  left: 1280px;
+  width: 112px;
+  height: 118px;
+  background-color: #eacc8e40;
+  border-radius: 10px;
+}
+
+.dashboard .text-wrapper-15 {
+  position: absolute;
+  top: 298px;
+  left: 918px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 9px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .element-c-min {
+  position: absolute;
+  top: 322px;
+  left: 903px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-16 {
+  font-family: "Poppins-Regular", Helvetica;
+  font-size: 13px;
+}
+
+.dashboard .text-wrapper-17 {
+  position: absolute;
+  top: 322px;
+  left: 1046px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-18 {
+  position: absolute;
+  top: 324px;
+  left: 1176px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-19 {
+  top: 324px;
+  left: 1323px;
+  position: absolute;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .element-c-max {
+  position: absolute;
+  top: 340px;
+  left: 906px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-20 {
+  top: 298px;
+  left: 1060px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 9px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-21 {
+  position: absolute;
+  top: 298px;
+  left: 1196px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 9px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-22 {
+  position: absolute;
+  top: 300px;
+  left: 1319px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 9px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text {
+  position: absolute;
+  top: 223px;
+  left: 906px;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .group {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 268px; /* above Temperature label */
+  left: 932px; /* center of Temperature card (896px + 112px/2 - 30px/2) */
+}
+
+.dashboard .icon-pressure {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 268px; /* above Pressure label */
+  left: 1066px; /* center of Pressure card (1024px + 112px/2 - 30px/2) */
+}
+
+.dashboard .icon-wind {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 268px; /* above Wind label */
+  left: 1200px; /* center of Wind card (1152px + 112px/2 - 30px/2) */
+}
+
+.dashboard .icon-season {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 268px; /* above Season label */
+  left: 1318px; /* center of Season card (1280px + 112px/2 - 30px/2) */
+}
+
+.dashboard .layer {
+  position: absolute;
+  top: 123px;
+  left: 171px;
+  width: 15px;
+  height: 20px;
+  background-image: url(./img/vector-8.svg);
+  background-size: 100% 100%;
+}
+
+.dashboard .text-wrapper-23 {
+  position: absolute;
+  top: 128px;
+  right: 230px; /* align with left edge of white sidebar (445px - 24px) */
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 31px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .frame {
+  position: absolute;
+  top: 187px;
+  right: 12px;
+  width: 424px;
+  height: calc(100vh - 210px);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.dashboard .frame::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.dashboard .text-wrapper-24 {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .mask-group-3 {
+  position: absolute;
+  top: 29px;
+  left: 4px;
+  width: 42px;
+  height: 42px;
+}
+
+.dashboard .mask-group-4 {
+  position: absolute;
+  top: 29px;
+  left: 52px;
+  width: 42px;
+  height: 42px;
+}
+
+.dashboard .mask-group-5 {
+  position: absolute;
+  top: 29px;
+  left: 100px;
+  width: 42px;
+  height: 42px;
+}
+
+.dashboard .mask-group-6 {
+  position: absolute;
+  top: 30px;
+  left: 148px;
+  width: 42px;
+  height: 42px;
+}
+
+.dashboard .group-2 {
+  position: absolute;
+  top: 1712px;
+  left: 4px;
+  width: 411px;
+  height: 104px;
+}
+
+.dashboard .text-wrapper-25 {
+  top: 0;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  line-height: normal;
+  position: absolute;
+  left: 0;
+  letter-spacing: 0;
+}
+
+.dashboard .text-wrapper-26 {
+  top: 89px;
+  width: 405px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #6b6b6b;
+  font-size: 10px;
+  line-height: 15px;
+  text-decoration: underline;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  letter-spacing: 0;
+}
+
+.dashboard .text-wrapper-27 {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 405px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #6b6b6b;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+}
+
+.dashboard .group-3 {
+  position: absolute;
+  top: 89px;
+  left: 4px;
+  width: 411px;
+  height: 236px;
+}
+
+.dashboard .text-wrapper-28 {
+  top: 54px;
+  position: absolute;
+  left: 0;
+  width: 118px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #5e5e5e;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-29 {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 405px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #6b6b6b;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+}
+
+.dashboard .group-4 {
+  position: absolute;
+  top: 80px;
+  left: 18px;
+  width: 368px;
+  height: 166px;
+}
+
+.dashboard .vector {
+  position: absolute;
+  top: 24px;
+  left: 1px;
+  width: 359px;
+  height: 136px;
+}
+
+.dashboard .vector-2 {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 359px;
+  height: 123px;
+}
+
+.dashboard .text-wrapper-30 {
+  position: absolute;
+  top: 0;
+  left: 228px;
+  width: 80px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-31 {
+  position: absolute;
+  top: 74px;
+  left: 80px;
+  width: 85px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-32 {
+  position: absolute;
+  top: 147px;
+  left: 77px;
+  width: 80px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-33 {
+  position: absolute;
+  top: 147px;
+  left: 222px;
+  width: 118px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .ellipse {
+  top: 93px;
+  left: 109px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #b9fd00;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #ffffff;
+}
+
+.dashboard .ellipse-2 {
+  top: 18px;
+  left: 255px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #b9fd00;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #ffffff;
+}
+
+.dashboard .group-5 {
+  position: absolute;
+  top: 374px;
+  left: 4px;
+  width: 411px;
+  height: 200px;
+}
+
+.dashboard .text-wrapper-34 {
+  top: 40px;
+  position: absolute;
+  left: 0;
+  width: 118px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #5e5e5e;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-35 {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  width: 405px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #6b6b6b;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+}
+
+.dashboard .group-6 {
+  position: absolute;
+  top: 71px;
+  left: 12px;
+  width: 371px;
+  height: 129px;
+}
+
+.dashboard .text-wrapper-36 {
+  position: absolute;
+  top: 105px;
+  left: 6px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-37 {
+  position: absolute;
+  top: 102px;
+  left: 151px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-38 {
+  position: absolute;
+  top: 105px;
+  left: 282px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .layer-2 {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 102px;
+  height: 102px;
+  overflow: hidden;
+}
+
+.dashboard .group-7 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.26;
+  background-image: url(./img/vector-13.svg);
+  background-size: 100% 100%;
+}
+
+.dashboard .vector-3 {
+  position: absolute;
+  width: 100.00%;
+  height: 99.59%;
+  top: 0;
+  left: 0;
+}
+
+.dashboard .text-wrapper-39 {
+  width: 45.71%;
+  left: 35.97%;
+  color: #4bbd9a;
+  position: absolute;
+  height: 34.29%;
+  top: 38.74%;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.dashboard .layer-3 {
+  position: absolute;
+  top: 0;
+  left: 135px;
+  width: 101px;
+  height: 102px;
+}
+
+.dashboard .group-8 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.26;
+  background-image: url(./img/vector-6.svg);
+  background-size: 100% 100%;
+}
+
+.dashboard .group-9 {
+  position: absolute;
+  width: 100.00%;
+  height: 99.63%;
+  top: 0;
+  left: 0;
+}
+
+.dashboard .vector-4 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 16.12%;
+  left: 41.96%;
+}
+
+.dashboard .vector-5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.dashboard .text-wrapper-40 {
+  width: 39.13%;
+  left: 39.35%;
+  color: #f05678;
+  position: absolute;
+  height: 34.29%;
+  top: 38.74%;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.dashboard .layer-4 {
+  position: absolute;
+  top: 3px;
+  left: 263px;
+  width: 102px;
+  height: 102px;
+  overflow: hidden;
+}
+
+.dashboard .group-10 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.26;
+  background-image: url(./img/image.svg);
+  background-size: 100% 100%;
+}
+
+.dashboard .vector-6 {
+  position: absolute;
+  width: 100.00%;
+  height: 99.47%;
+  top: 0;
+  left: 0;
+}
+
+.dashboard .text-wrapper-41 {
+  width: 41.43%;
+  left: 37.39%;
+  color: #6562ac;
+  position: absolute;
+  height: 34.29%;
+  top: 38.74%;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.dashboard .group-11 {
+  position: absolute;
+  top: 611px;
+  left: 0;
+  width: 411px;
+  height: 370px;
+}
+
+.dashboard .text-wrapper-42 {
+  top: 55px;
+  position: absolute;
+  left: 0;
+  width: 118px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #5e5e5e;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .overlap-group-wrapper {
+  position: absolute;
+  height: 279px;
+  top: 91px;
+  left: 26px;
+  display: flex;
+  align-items: flex-start;
+  min-width: 363px;
+}
+
+.dashboard .overlap-group {
+  width: 363px;
+  height: 279px;
+  position: relative;
+}
+
+.dashboard .group-wrapper {
+  position: absolute;
+  width: 363px;
+  height: 83px;
+  top: 196px;
+  left: 0;
+  display: flex;
+}
+
+.dashboard .group-12 {
+  width: 389px;
+  height: 83px;
+  position: relative;
+}
+
+.dashboard .text-wrapper-43 {
+  left: 62px;
+  position: absolute;
+  top: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-44 {
+  left: 251px;
+  position: absolute;
+  top: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-45 {
+  position: absolute;
+  top: 39px;
+  left: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .a-nuclear-fission {
+  position: absolute;
+  top: 59px;
+  left: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 6px;
+  letter-spacing: 0;
+  line-height: 8px;
+}
+
+.dashboard .a-smart-grid-control {
+  position: absolute;
+  top: 59px;
+  left: 225px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 6px;
+  letter-spacing: 0;
+  line-height: 8px;
+}
+
+.dashboard .a-battery-banks-li {
+  position: absolute;
+  top: 59px;
+  left: 136px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 6px;
+  letter-spacing: 0;
+  line-height: 8px;
+}
+
+.dashboard .text-wrapper-46 {
+  position: absolute;
+  top: 39px;
+  left: 136px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .distribution {
+  position: absolute;
+  top: 39px;
+  left: 225px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-47 {
+  left: 142px;
+  position: absolute;
+  top: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-48 {
+  left: 90px;
+  position: absolute;
+  top: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-49 {
+  left: 279px;
+  position: absolute;
+  top: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-50 {
+  left: 170px;
+  position: absolute;
+  top: 0;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-51 {
+  position: absolute;
+  top: 0;
+  left: 198px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .group-13 {
+  position: absolute;
+  width: 305px;
+  height: 240px;
+  top: 0;
+  left: 13px;
+  background-image: url(./img/image-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.dashboard .group-14 {
+  position: absolute;
+  top: 1026px;
+  left: 4px;
+  width: 411px;
+  height: 145px;
+}
+
+.dashboard .text-wrapper-52 {
+  position: absolute;
+  top: 68px;
+  left: 0;
+  width: 118px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #5e5e5e;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-53 {
+  position: absolute;
+  top: 27px;
+  left: 0;
+  width: 405px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #6b6b6b;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+}
+
+.dashboard .image-2 {
+  position: absolute;
+  top: 108px;
+  left: 0;
+  width: 395px;
+  height: 37px;
+  aspect-ratio: 10.71;
+  object-fit: cover;
+}
+
+.dashboard .group-15 {
+  position: absolute;
+  top: 1201px;
+  left: 4px;
+  width: 426px;
+  height: 254px;
+}
+
+.dashboard .group-16 {
+  position: absolute;
+  top: 109px;
+  left: 0;
+  width: 420px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
+  gap: 10.5px;
+}
+
+.dashboard .image-3 {
+  width: 381px;
+  height: 119px;
+  aspect-ratio: 3.2;
+  object-fit: cover;
+}
+
+.dashboard .group-17 {
+  margin-left: 40px;
+  width: 386px;
+  display: flex;
+}
+
+.dashboard .text-wrapper-54 {
+  width: 116px;
+  height: 15px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-55 {
+  width: 115px;
+  height: 15px;
+  margin-left: 40px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-56 {
+  width: 95px;
+  height: 15px;
+  margin-left: 14px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .group-18 {
+  position: absolute;
+  top: 1491px;
+  left: 4px;
+  width: 419px;
+  height: 194px;
+}
+
+.dashboard .text-wrapper-57 {
+  top: 69px;
+  position: absolute;
+  left: 0;
+  width: 118px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #5e5e5e;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-58 {
+  top: 97px;
+  left: 301px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-59 {
+  position: absolute;
+  top: 123px;
+  left: 301px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-60 {
+  position: absolute;
+  top: 153px;
+  left: 301px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-61 {
+  position: absolute;
+  top: 179px;
+  left: 301px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .overlap-wrapper {
+  position: absolute;
+  height: 218px;
+  top: 1844px;
+  left: 4px;
+  display: flex;
+  align-items: flex-start;
+  min-width: 405px;
+}
+
+.dashboard .overlap {
+  width: 405px;
+  height: 218px;
+  position: relative;
+}
+
+.dashboard .div-wrapper {
+  position: absolute;
+  width: 405px;
+  height: 85px;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.dashboard .group-19 {
+  width: 409px;
+  height: 85px;
+  position: relative;
+}
+
+.dashboard .text-wrapper-62 {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 405px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #6b6b6b;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  text-decoration: underline;
+}
+
+.dashboard .group-20 {
+  position: absolute;
+  width: 371px;
+  height: 147px;
+  top: 71px;
+  left: 2px;
+  display: flex;
+}
+
+.dashboard .group-21 {
+  width: 373px;
+  height: 147px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.dashboard .image-4 {
+  width: 371px;
+  height: 119px;
+  aspect-ratio: 3.12;
+  object-fit: cover;
+}
+
+.dashboard .text-wrapper-63 {
+  margin-left: 56px;
+  width: 286px;
+  height: 15px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.dashboard .group-22 {
+  position: absolute;
+  top: 1593px;
+  left: 6px;
+  width: 288px;
+  height: 90px;
+  background-image: url(./img/image-5.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.dashboard .group-23 {
+  position: absolute;
+  top: 474px;
+  left: 75px;
+  width: 392px;
+  height: 121px;
+}
+
+.dashboard .rectangle-14 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 386px;
+  height: 121px;
+  background-color: #fffbced1;
+  border-radius: 10px;
+}
+
+.dashboard .OBJECTS {
+  position: absolute;
+  top: 30px;
+  left: 19px;
+  width: 64px;
+  height: 58px;
+}
+
+.dashboard .vector-7 {
+  position: absolute;
+  width: 23.64%;
+  height: 88.58%;
+  top: 0;
+  left: 0;
+}
+
+.dashboard .vector-8 {
+  position: absolute;
+  width: 29.28%;
+  height: 71.96%;
+  top: 28.04%;
+  left: 35.35%;
+}
+
+.dashboard .vector-9 {
+  position: absolute;
+  width: 23.65%;
+  height: 88.59%;
+  top: 0;
+  left: 76.35%;
+}
+
+.dashboard .vector-10 {
+  position: absolute;
+  width: 17.79%;
+  height: 61.56%;
+  top: 13.41%;
+  left: 15.61%;
+}
+
+.dashboard .vector-11 {
+  position: absolute;
+  width: 17.78%;
+  height: 61.41%;
+  top: 13.63%;
+  left: 66.58%;
+}
+
+.dashboard .text-wrapper-64 {
+  position: absolute;
+  top: 12px;
+  left: 97px;
+  width: 225px;
+  font-family: "Poppins-Black", Helvetica;
+  font-weight: 900;
+  color: #00c416;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-65 {
+  position: absolute;
+  top: 35px;
+  left: 97px;
+  width: 225px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.dashboard .text-wrapper-66 {
+  position: absolute;
+  top: 64px;
+  left: 97px;
+  width: 220px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-67 {
+  position: absolute;
+  top: 89px;
+  right: 405px; /* 24px inset from sidebar left (445 - 24) */
+  width: 28px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.dashboard .text-wrapper-68 {
+  position: absolute;
+  top: 89px;
+  right: 110px;
+  width: 150px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: right;
+}
+
+.dashboard .align-justify {
+  position: absolute;
+  top: 90px;
+  right: 16px;
+  width: 23px;
+  height: 23px;
+}
+
+.dashboard .layer-5 {
+  position: absolute;
+  top: 85px;
+  right: 60px;
+  width: 30px;
+  height: 30px;
+  background-image: url(./img/vector-9.svg);
+  background-size: 100% 100%;
+}
+
+.dashboard .chevron-down {
+  position: absolute;
+  top: 92px;
+  right: 396px; /* near EN */
+  width: 20px;
+  height: 22px;
+}
+
+.dashboard .icon {
+  position: absolute;
+  width: 50.00%;
+  height: 25.00%;
+  top: 35.23%;
+  left: 22.50%;
+}
+
+.dashboard .group-24 {
+  position: absolute;
+  top: 561px;
+  left: 173px;
+  width: 349px;
+  height: 17px;
+  display: flex;
+}
+
+.dashboard .text-wrapper-69 {
+  width: 347px;
+  height: 17px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
